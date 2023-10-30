@@ -29,7 +29,8 @@ worksapce_path= C:/samadhi/workspace
 5. run native image
     target\target\benchmarks-jvm-native-img.exe
 
-
+-- Info about what we going to test
+java -cp C:/samadhi/workspace/java/graalvm/target/classes com.aniket.graalvm.perf.Info
 
 
 --- for next part 
