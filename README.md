@@ -1,7 +1,3 @@
-https://medium.com/@jayliya/jmh-java-benchmarking-framework-need-of-jmh-and-a-example-demonstrating-its-use-8aa34375cb1e
-
-https://www.graalvm.org/latest/reference-manual/native-image/overview/HostedvsRuntimeOptions/
-
 ----------------  run as regular jdk -----------------
 base_path = C:\samadhi\technology
 worksapce_path= C:/samadhi/workspace
