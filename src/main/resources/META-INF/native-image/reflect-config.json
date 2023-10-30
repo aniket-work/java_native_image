@@ -3,9 +3,9 @@
   "name":"[Lcom.sun.tools.javac.jvm.PoolConstant$LoadableConstant;"
 },
 {
-  "name":"com.aniket.graalvm.perf.jmh_generated.NativeImageBenchmark_test_jmhTest",
+  "name":"com.aniket.graalvm.perf.jmh_generated.NativeImageBenchmark_performMemoryIntensiveOperation_jmhTest",
   "queryAllDeclaredMethods":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"test_Throughput","parameterTypes":["org.openjdk.jmh.runner.InfraControl","org.openjdk.jmh.infra.ThreadParams"] }]
+  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"performMemoryIntensiveOperation_Throughput","parameterTypes":["org.openjdk.jmh.runner.InfraControl","org.openjdk.jmh.infra.ThreadParams"] }]
 },
 {
   "name":"com.aniket.graalvm.perf.jmh_generated.NativeImageBenchmark_startupTimeComparison_jmhTest",

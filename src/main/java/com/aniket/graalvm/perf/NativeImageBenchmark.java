@@ -3,6 +3,7 @@ package com.aniket.graalvm.perf;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
 
+import javax.swing.tree.TreeNode;
 import java.util.concurrent.*;
 
 @Warmup(iterations = 1, time = 50, timeUnit = TimeUnit.SECONDS)
@@ -17,44 +18,15 @@ public class NativeImageBenchmark {
 
     @Benchmark
     @Fork(0)
-    public static void test(Blackhole blackhole) throws Exception {
+    public static void performMemoryIntensiveOperation(Blackhole blackhole) throws Exception {
 
-        final int maxDepth = settingParams < (MIN_DEPTH + 2) ? MIN_DEPTH + 2 : settingParams;
-        final int stretchDepth = maxDepth + 1;
+        int iterations = 1000000;
+        double[] data = new double[iterations];
 
-        blackhole.consume("stretch tree of depth " + stretchDepth + "\t check: "
-                + bottomUpTree(stretchDepth).itemCheck());
-
-        final TreeNode longLivedTree = bottomUpTree(maxDepth);
-
-        final String[] results = new String[(maxDepth - MIN_DEPTH) / 2 + 1];
-
-        final ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
-
-        for (int d = MIN_DEPTH; d <= maxDepth; d += 2) {
-            final int depth = d;
-            executorService.execute(() -> {
-                int check = 0;
-
-                final int iterations = 1 << (maxDepth - depth + MIN_DEPTH);
-                for (int i = 1; i <= iterations; ++i) {
-                    final TreeNode treeNode1 = bottomUpTree(depth);
-                    check += treeNode1.itemCheck();
-                }
-                results[(depth - MIN_DEPTH) / 2]
-                        = iterations + "\t trees of depth " + depth + "\t check: " + check;
-            });
+        // Perform some memory-intensive calculations
+        for (int i = 0; i < iterations; i++) {
+            data[i] = Math.sin(i) * Math.cos(i);
         }
-
-        executorService.shutdown();
-        executorService.awaitTermination(120L, TimeUnit.SECONDS);
-
-        for (final String str : results) {
-            blackhole.consume(str);
-        }
-
-        blackhole.consume("long lived tree of depth " + maxDepth
-                + "\t check: " + longLivedTree.itemCheck());
     }
 
     @Fork(0)
@@ -101,35 +73,5 @@ public class NativeImageBenchmark {
         long duration = (endTime - startTime) / 1_000_000; // milliseconds
 
         System.out.println("Startup time: " + duration + " ms");
-    }
-
-    private static TreeNode bottomUpTree(final int depth) {
-        if (0 < depth) {
-            return new TreeNode(bottomUpTree(depth - 1), bottomUpTree(depth - 1));
-        }
-        return new TreeNode();
-    }
-
-    private static final class TreeNode {
-
-        private final TreeNode left;
-        private final TreeNode right;
-
-        private TreeNode(final TreeNode left, final TreeNode right) {
-            this.left = left;
-            this.right = right;
-        }
-
-        private TreeNode() {
-            this(null, null);
-        }
-
-        private int itemCheck() {
-            // if necessary deallocate here
-            if (null == left) {
-                return 1;
-            }
-            return 1 + left.itemCheck() + right.itemCheck();
-        }
     }
 }
