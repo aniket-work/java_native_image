@@ -5,9 +5,10 @@ public class Info {
     public static void main(String[] args) {
         Table table = new Table();
         table.addHeader("Benchmark Method", "Description", "Parameters", "Iterations", "Warmup Iterations", "Warmup Time", "Measurement Time");
-        table.addRow("performMemoryIntensiveOperation", "Memory-Intensive Operation", "", "1", "1", "50 seconds", "50 seconds");
-        table.addRow("measureSuperIntenseCPUMemoryOperation", "Super Intense CPU & Memory Operation", "", "1", "1", "50 seconds", "50 seconds");
-        table.addRow("startupTimeComparison", "Startup Time Comparison", "", "1", "1", "50 seconds", "50 seconds");
+        table.addRow("performMemoryIntensiveOperation", "Memory-Intensive Operation", "14", "3", "3", "50 seconds", "50 seconds");
+        table.addRow("measureSuperIntenseCPUMemoryOperation", "Super Intense CPU & Memory Operation", "14", "3", "3", "50 seconds", "50 seconds");
+        table.addRow("startupTimeComparison", "Startup Time Comparison", "14", "3", "3", "50 seconds", "50 seconds");
+        table.addRow("measureStartupTime", "Startup Time Measurement", "N/A", "3", "3", "50 seconds", "50 seconds");
         table.print();
     }
 
