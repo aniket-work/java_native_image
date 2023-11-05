@@ -1,0 +1,35 @@
+# Sample Configuration File
+# This is a larger configuration file for a more significant startup time demonstration.
+
+app.name=MyApp
+app.version=1.0.0
+app.author=Aniket Hingane
+
+database.url=jdbc:mysql://localhost:3306/mydb
+database.username=myuser
+database.password=mypassword
+
+server.port=8080
+server.host=localhost
+
+# Additional application settings
+logging.level=INFO
+max_connections=1000
+cache.enabled=true
+cache.size=256MB
+
+# Security settings
+security.secretKey=MySecretKey123
+security.allowed_ips=192.168.1.1,192.168.1.2,192.168.1.3
+
+# Email configuration
+email.smtp.server=smtp.example.com
+email.smtp.port=587
+email.username=emailuser
+email.password=emailpassword
+email.sender=sender@example.com
+
+# Database connection pooling
+db.pool.min_connections=10
+db.pool.max_connections=100
+db.pool.connection_timeout=5000

@@ -4,7 +4,7 @@ worksapce_path= C:/samadhi/workspace
 
 1. open cmd
 2. to temporarily set given jdk
-    set PATH=${base_path}\ava\jdk-17.0.8_windows-x64_bin\jdk-17.0.8\bin;%PATH%
+    set PATH=${base_path}\java\jdk-17.0.8_windows-x64_bin\jdk-17.0.8\bin;%PATH%
     java --version
 3. ${base_path}\apache\maven\bin\mvn clean package
 

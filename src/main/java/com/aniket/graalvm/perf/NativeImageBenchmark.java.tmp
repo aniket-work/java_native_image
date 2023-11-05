@@ -6,8 +6,8 @@ import org.openjdk.jmh.infra.Blackhole;
 import javax.swing.tree.TreeNode;
 import java.util.concurrent.*;
 
-@Warmup(iterations = 1, time = 50, timeUnit = TimeUnit.SECONDS)
-@Measurement(iterations = 1, time = 50, timeUnit = TimeUnit.SECONDS)
+@Warmup(iterations = 3, time = 50, timeUnit = TimeUnit.SECONDS)
+@Measurement(iterations = 3, time = 50, timeUnit = TimeUnit.SECONDS)
 @State(Scope.Benchmark)
 public class NativeImageBenchmark {
 
@@ -16,8 +16,8 @@ public class NativeImageBenchmark {
     @Param("14")
     private static int settingParams;
 
-    @Benchmark
-    @Fork(0)
+    /*@Benchmark
+    @Fork(0)*/
     public static void performMemoryIntensiveOperation(Blackhole blackhole) throws Exception {
 
         int iterations = 1000000;
@@ -32,7 +32,7 @@ public class NativeImageBenchmark {
     @Fork(0)
     @Benchmark
     public static void measureSuperIntenseCPUMemoryOperation(Blackhole blackhole) throws Exception {
-        int numThreads = 10; // Increase the number of threads for more CPU usage
+        int numThreads = 4; // Increase the number of threads for more CPU usage
         int arraySize = 1000000; // Increase the array size for more memory usage
 
         ExecutorService executor = Executors.newFixedThreadPool(numThreads);
@@ -72,6 +72,6 @@ public class NativeImageBenchmark {
         long endTime = System.nanoTime();
         long duration = (endTime - startTime) / 1_000_000; // milliseconds
 
-        System.out.println("Startup time: " + duration + " ms");
+        //System.out.println("Startup time: " + duration + " ms");
     }
 }
