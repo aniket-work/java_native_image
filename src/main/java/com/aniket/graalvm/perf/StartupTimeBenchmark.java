@@ -15,6 +15,7 @@ public class StartupTimeBenchmark {
     private String configuration;
 
     @Benchmark
+    @Fork(0)
     public void measureStartupTime() {
         // Simulate startup operations by reading a configuration file
         loadConfiguration();
@@ -33,9 +34,5 @@ public class StartupTimeBenchmark {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) throws Exception {
-        org.openjdk.jmh.Main.main(args);
     }
 }

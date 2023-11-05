@@ -191,6 +191,9 @@
                                 <buildArg>--initialize-at-build-time=org.openjdk.jmh.infra,org.openjdk.jmh.util.Utils,org.openjdk.jmh.runner.InfraControl,org.openjdk.jmh.runner.InfraControlL0,org.openjdk.jmh.runner.InfraControlL1,org.openjdk.jmh.runner.InfraControlL2,org.openjdk.jmh.runner.InfraControlL3,org.openjdk.jmh.runner.InfraControlL4</buildArg>
                                 <buildArg>-H:+BuildReport</buildArg>
                                 <buildArg>-march=native</buildArg>
+                                <buildArg>-J-Xmx1g</buildArg>
+                                <buildArg>-R:MaxHeapSize=1g</buildArg>
+                                <buildArg>-Ob</buildArg>
                                 <buildArg>--enable-monitoring=jfr</buildArg>
                             </buildArgs>
                         </configuration>

@@ -18,6 +18,11 @@
   "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"measureSuperIntenseCPUMemoryOperation_Throughput","parameterTypes":["org.openjdk.jmh.runner.InfraControl","org.openjdk.jmh.infra.ThreadParams"] }]
 },
 {
+  "name":"com.aniket.graalvm.perf.jmh_generated.StartupTimeBenchmark_measureStartupTime_jmhTest",
+  "queryAllDeclaredMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"measureStartupTime_Throughput","parameterTypes":["org.openjdk.jmh.runner.InfraControl","org.openjdk.jmh.infra.ThreadParams"] }]
+},
+{
   "name":"java.io.Console",
   "methods":[{"name":"charset","parameterTypes":[] }]
 },
