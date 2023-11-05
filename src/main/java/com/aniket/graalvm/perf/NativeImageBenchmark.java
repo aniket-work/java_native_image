@@ -16,8 +16,8 @@ public class NativeImageBenchmark {
     @Param("14")
     private static int settingParams;
 
-    /*@Benchmark
-    @Fork(0)*/
+    @Benchmark
+    @Fork(0)
     public static void performMemoryIntensiveOperation(Blackhole blackhole) throws Exception {
 
         int iterations = 1000000;
