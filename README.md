@@ -1,34 +1,46 @@
-----------------  run as regular jdk -----------------
-base_path = C:\samadhi\technology
-worksapce_path= C:/samadhi/workspace
+# 🚀 Exploring Low Latency with JMH
 
-1. open cmd
-2. to temporarily set given jdk
-    set PATH=${base_path}\java\jdk-17.0.8_windows-x64_bin\jdk-17.0.8\bin;%PATH%
-    java --version
-3. ${base_path}\apache\maven\bin\mvn clean package
+"Low latency" – it's a phrase that might not get everyone excited, but it sure has its moments. It's like that one dish on the menu that some people can't get enough of, and I'm right there with them. We all have our quirks, right? In the world of software performance, it's not just about what we like; it's about the quest for smoother and faster experiences. That's why we're delving deep into the world of performance in Part 3, with a special focus on the trusty tool called JMH.
 
-4. run as regular jdk
-    cd ${worksapce_path}/java/graalvm
-    ${base_path}\ava\jdk-17.0.8_windows-x64_bin\jdk-17.0.8\bin\java -jar target\benchmarks-jvm-native-img.jar
+If you've been following our expedition from the very beginning, you've already embarked on an exhilarating adventure that has taken you from the introductory shores of GraalVM in Part 1 to the depths of JVM's inner workings in Part 2. Now, as we enter Part 3, prepare yourselves for a deep dive into the heart of performance, where we will explore why JMH is a crucial tool if you truly want to measure real performance.
 
-----------------  run as native image -----------------
-1. open native prompt ( search native on windows, you need to install VS code 2022)
+## 🛠️ Getting Started
 
-2. cd ${worksapce_path}/java/graalvm/
+### Build your project with Maven
 
-3. build and run like a regular jvm ( and record perf) 
-    ${base_path}\apache\maven\bin\mvn clean package exec:exec
+To run your project as a regular JDK, open your command prompt and execute the following commands:
 
-4. build native image
-    ${base_path}\apache\maven\bin\mvn package -Pnative
-5. run native image
-    target\target\benchmarks-jvm-native-img.exe
+```sh
+# Open a native prompt (search "native" on Windows, you need to install Visual Studio 2022).
+cd <your_workspace_path>/java/graalvm/
 
--- Info about what we going to test
-java -cp C:/samadhi/workspace/java/graalvm/target/classes com.aniket.graalvm.perf.Info
+# Build and run like a regular JVM (and record performance):
+set PATH=<your_base_path>\java\jdk-17.0.8_windows-x64_bin\jdk-17.0.8\bin;%PATH%
+java --version
+<your_base_path>\apache\maven\bin\mvn clean package
 
+# Run as a regular JDK:
+cd ${workspace_path}/java/graalvm
+${base_path}/java/jdk-17.0.8_windows-x64_bin/jdk-17.0.8/bin/java -jar target/benchmarks-jvm-native-img.jar
+```
+Build and run as a native image
+```sh
+# Open a native prompt (search "native" on Windows, you need to install Visual Studio 2022).
+cd <your_workspace_path>/java/graalvm/
 
---- for next part 
-5. run native image ( and record perf)
-    target\benchmark-binary-tree.exe -XX:+FlightRecorder -XX:StartFlightRecording="filename=recording.jfr"
+# Build and run like a regular JVM (and record performance):
+<your_base_path>\apache\maven\bin\mvn clean package exec:exec
+
+# Build the native image:
+<your_base_path>\apache\maven\bin\mvn package -Pnative
+
+# Run the native image:
+target/benchmark-binary-tree.exe
+```
+
+Additional Information
+To learn more about what we're going to test, execute:
+```shell
+java -cp <your_workspace_path>/java/graalvm/target/classes com.aniket.graalvm.perf.Info
+```
+
